@@ -1,5 +1,4 @@
 import express from 'express';
-import 'dotenv/config.js';
 import cookieParser from 'cookie-parser';
 import colors from 'colors';
 import morgan from 'morgan';
@@ -11,8 +10,8 @@ import helmet from 'helmet';
 import hpp from 'hpp';
 import rateLimit from 'express-rate-limit';
 import xss from 'xss-clean';
-import {errorHandler} from './middleware/error.js';
-import connectDB from './config/db.js';
+import {errorHandler} from '../middleware/error.js';
+import connectDB from '../config/db.js';
 
 
 // connect to database
@@ -22,13 +21,13 @@ connectDB();
 config(process.env.CLOUD_NAME, process.env.API_KEY, process.env.API_SECRET);
 
 // Import routes
-import vehicles from './routes/vehicle.js';
-import auth from './routes/auth.js'
-import users from './routes/users.js';
-import ratings from './routes/rating.js';
-import bookings from './routes/booking.js';
-import reviews from './routes/review.js';
-import licenses from './routes/license.js';
+import vehicles from '../routes/vehicle.js';
+import auth from '../routes/auth.js'
+import users from '../routes/users.js';
+import ratings from '../routes/rating.js';
+import bookings from '../routes/booking.js';
+import reviews from '../routes/review.js';
+import licenses from '../routes/license.js';
 
 const app = express();
 
@@ -85,14 +84,4 @@ app.use('/api/v1/licenses', licenses);
 
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
-
-const server = app.listen(PORT, () =>
-    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold));
-
-//Handle unhandled promise rejections
-process.on('unhandledRejection', (err, promise) => {
-    console.log(`Error: ${err.message}`.red)
-    // close server and exit processes
-    // server.close(() => process.exit(1))
-});
+export default app;
