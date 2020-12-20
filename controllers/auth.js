@@ -3,6 +3,7 @@ import asyncHandler from 'express-async-handler';
 import {uploadImage} from 'cloudinary-simple-upload';
 import ErrorResponse from '../utils/errorResponse.js';
 import sendEmail from '../utils/sendEmail.js';
+import folders from '../helpers/folders.js';
 
 import User from '../models/User.js';
 
@@ -62,7 +63,7 @@ export const login = asyncHandler(async (req, res, next) => {
     // Validate login
     if (!username || !password) {
         return next(
-            new ErrorResponse('Please provide an email and password')
+            new ErrorResponse('Please provide a username and password', 400)
         );
     }
 
@@ -147,7 +148,7 @@ export const uploadPhoto = asyncHandler(async (req, res, next) => {
         );
     }
 
-    const image = await uploadImage(req.files.image, 'Tutorials Users', 'owner');
+    const image = await uploadImage(req.files.image, folders.users, 'owner');
 
     const user = await User.findByIdAndUpdate(req.user.id, {image}, {
         new: true,
