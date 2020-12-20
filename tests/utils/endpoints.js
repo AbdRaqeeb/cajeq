@@ -1,0 +1,12 @@
+export const REGISTER = '/api/v1/auth/register';
+export const LOGIN = '/api/v1/auth/login';
+export const LOGOUT = '/api/v1/auth/logout';
+export const FORGOT_PASSWORD = '/api/v1/auth/forgot-password';
+export const GET_ME = '/api/v1/auth/me';
+export const CONFIRM_EMAIL = '/api/v1/auth/confirm/email';
+export const UPDATE_USER = '/api/v1/auth/update';
+export const UPLOAD_PHOTO = '/api/v1/auth/upload/photo';
+export const UPDATE_PASSWORD = '/api/v1/auth/password';
+export const RESET_PASSWORD = '/api/v1/auth/resetpassword';
+export const VEHICLE = '/api/v1/vehicles';
+export const GET_VEHICLE_DISTANCE = '/api/v1/vehicles/radius';

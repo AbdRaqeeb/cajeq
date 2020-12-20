@@ -12,7 +12,7 @@ import rateLimit from 'express-rate-limit';
 import xss from 'xss-clean';
 import {errorHandler} from '../middleware/error.js';
 import connectDB from '../config/db.js';
-
+import 'dotenv/config.js';
 
 // connect to database
 connectDB();
