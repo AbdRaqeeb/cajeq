@@ -17,10 +17,7 @@ export const getUsers = asyncHandler(async (req, res, next) => {
  * @access  private/admin
  * */
 export const getUser = asyncHandler(async (req, res, next) => {
-    const user = await User.findById(req.params.id).populate({
-        path: "subjects",
-        select: "title"
-    });
+    const user = await User.findById(req.params.id);
 
     res.status(200).json({
         success: true,
@@ -74,7 +71,15 @@ export const updateUser = asyncHandler(async (req, res, next) => {
  * @access  private/admin
  * */
 export const deleteUser = asyncHandler(async (req, res, next) => {
-    await User.findByIdAndDelete(req.params.id);
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+        return next(
+            new ErrorResponse(`User with the ID ${req.params.id} not found`, 404)
+        );
+    }
+
+    await user.remove();
 
     res.status(200).json({
         success: true,

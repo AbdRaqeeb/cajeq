@@ -23,10 +23,7 @@ router.use('/:userId/ratings', ratingRouter);
 
 router
     .route('/')
-    .get(protect, authorize('admin'), advancedResults(User, {
-        path: 'subjects',
-        select: 'title'
-    }), getUsers)
+    .get(protect, authorize('admin'), advancedResults(User), getUsers)
     .post(protect, authorize('admin'), createUser);
 
 router
