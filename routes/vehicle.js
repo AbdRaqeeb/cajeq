@@ -30,5 +30,5 @@ router
     .put(protect, updateVehicle)
     .delete(protect, deleteVehicle);
 
-router.route('/radius/:zipcode/:distance').get(getVehiclesInRadius);
+router.route('/radius/:lat/:long/:distance').get(getVehiclesInRadius);
 export default router;

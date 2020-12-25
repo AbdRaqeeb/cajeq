@@ -151,17 +151,12 @@ export const deleteVehicle = asyncHandler(async (req, res, next) => {
 });
 
 /**
- * @desc    Get tutors within a radius
- * @route   GET /api/v1/vehicles/radius/:zipcode/:distance
+ * @desc    Get vehicles within a radius
+ * @route   GET /api/v1/vehicles/radius/:lat/:long/:distance
  * @access  Public
  * */
 export const getVehiclesInRadius = asyncHandler(async (req, res, next) => {
-    const {zipcode, distance} = req.params;
-
-    // Get lat/lng from geocoder
-    const loc = await geocoder.geocode(zipcode);
-    const lat = loc[0].latitude;
-    const lng = loc[0].longitude;
+    const {lat, long, distance} = req.params;
 
     // Calc radius using radians
     // Divide dist by radius of Earth
@@ -169,7 +164,7 @@ export const getVehiclesInRadius = asyncHandler(async (req, res, next) => {
     const radius = distance / 3963;
 
     const vehicles = await Vehicle.find({
-        location: {$geoWithin: {$centerSphere: [[lng, lat], radius]}}
+        location: {$geoWithin: {$centerSphere: [[long, lat], radius]}}
     });
 
     res.status(200).json({
