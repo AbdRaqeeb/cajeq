@@ -165,7 +165,7 @@ export const getVehiclesInRadius = asyncHandler(async (req, res, next) => {
 
     const vehicles = await Vehicle.find({
         location: {$geoWithin: {$centerSphere: [[long, lat], radius]}}
-    });
+    }).populate('user', 'name email phone');
 
     res.status(200).json({
         success: true,
