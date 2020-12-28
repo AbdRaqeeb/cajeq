@@ -3,7 +3,6 @@ import asyncHandler from 'express-async-handler';
 import ErrorResponse from "../utils/errorResponse.js";
 import Vehicle from '../models/Vehicle.js';
 import folders from "../helpers/folders.js";
-import geocoder from "../utils/geocoder.js";
 
 /**
  * @desc    Add vehicles
