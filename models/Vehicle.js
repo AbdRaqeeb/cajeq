@@ -65,8 +65,7 @@ const VehicleSchema = new mongoose.Schema({
         max: [5, 'Rating must can not be more than 5']
     },
     images: {
-        type:[String],
-        required: [true, 'Please add vehicle images']
+        type:[String]
     },
     location: {
         // GeoJSON Point
