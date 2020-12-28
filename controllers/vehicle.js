@@ -15,6 +15,10 @@ export const addVehicle = asyncHandler(async (req, res, next) => {
 
     let vehicle = await Vehicle.create(req.body);
 
+    // decode array of features
+    const features = (Array.isArray(req.body.features[0])) ? req.body.features[0] : req.body.features;
+    req.body.features = features;
+
     vehicle = await Vehicle.findById(vehicle._id).populate('user', 'name email phone');
 
     res.status(201).json({
