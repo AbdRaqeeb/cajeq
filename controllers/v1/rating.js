@@ -1,9 +1,9 @@
-import ErrorResponse from '../utils/errorResponse.js';
 import asyncHandler from 'express-async-handler';
+import ErrorResponse from '../../utils/errorResponse.js';
 
 // models
-import User from '../models/User.js';
-import Rating from "../models/Rating.js";
+import User from '../../models/User.js';
+import Rating from "../../models/Rating.js";
 
 /**
  * @desc    Get ratings

@@ -1,12 +1,12 @@
 import asyncHandler from 'express-async-handler';
-import ErrorResponse from "../utils/errorResponse.js";
-import {generateReference} from "../utils/reference.js";
-import {getDifferenceInDays} from "../utils/date.js";
-import sendEmail from "../utils/sendEmail.js";
+import ErrorResponse from "../../utils/errorResponse.js";
+import {generateReference} from "../../utils/reference.js";
+import {getDifferenceInDays} from "../../utils/date.js";
+import sendEmail from "../../utils/sendEmail.js";
 
 // models
-import Booking from "../models/Booking.js";
-import Vehicle from '../models/Vehicle.js';
+import Booking from "../../models/Booking.js";
+import Vehicle from '../../models/Vehicle.js';
 
 
 /**

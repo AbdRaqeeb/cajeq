@@ -1,8 +1,8 @@
 import asyncHandler from 'express-async-handler';
 import {uploadImage} from 'cloudinary-simple-upload';
-import ErrorResponse from "../utils/errorResponse.js";
-import License from "../models/License.js";
-import folders from "../helpers/folders.js";
+import ErrorResponse from "../../utils/errorResponse.js";
+import License from "../../models/License.js";
+import folders from "../../helpers/folders.js";
 
 /**
  * @desc    Get driver licenses

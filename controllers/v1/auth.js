@@ -1,11 +1,11 @@
 import crypto from 'crypto';
 import asyncHandler from 'express-async-handler';
 import {uploadImage} from 'cloudinary-simple-upload';
-import ErrorResponse from '../utils/errorResponse.js';
-import sendEmail from '../utils/sendEmail.js';
-import folders from '../helpers/folders.js';
+import ErrorResponse from '../../utils/errorResponse.js';
+import sendEmail from '../../utils/sendEmail.js';
+import folders from '../../helpers/folders.js';
 
-import User from '../models/User.js';
+import User from '../../models/User.js';
 
 /**
  * @desc    Register user

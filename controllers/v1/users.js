@@ -1,6 +1,6 @@
 import asyncHandler from 'express-async-handler';
-import User from '../models/User.js';
-import ErrorResponse from "../utils/errorResponse.js";
+import User from '../../models/User.js';
+import ErrorResponse from "../../utils/errorResponse.js";
 
 /**
  * @desc    Get users

@@ -1,8 +1,8 @@
 import {uploadImages} from 'cloudinary-simple-upload';
 import asyncHandler from 'express-async-handler';
-import ErrorResponse from "../utils/errorResponse.js";
-import Vehicle from '../models/Vehicle.js';
-import folders from "../helpers/folders.js";
+import ErrorResponse from "../../utils/errorResponse.js";
+import Vehicle from '../../models/Vehicle.js';
+import folders from "../../helpers/folders.js";
 
 /**
  * @desc    Add vehicles
@@ -14,8 +14,11 @@ export const addVehicle = asyncHandler(async (req, res, next) => {
 
     let vehicle = await Vehicle.create(req.body);
 
+    // log req body
+    console.log('Body', req.body);
+
     // decode array of features
-    const features = (Array.isArray(req.body.features[0])) ? req.body.features[0] : req.body.features;
+    const features = (typeof (req.body.features)=== 'string') ? JSON.parse(JSON.stringify(req.body.features)) : req.body.features;
     req.body.features = features;
 
     vehicle = await Vehicle.findById(vehicle._id).populate('user', 'name email phone');
