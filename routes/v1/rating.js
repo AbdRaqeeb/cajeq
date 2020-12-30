@@ -5,13 +5,13 @@ import {
     getRating,
     updateRating,
     deleteRating
-} from '../controllers/rating.js';
+} from '../../controllers/v1/rating.js';
 
 const router = express.Router({mergeParams: true});
-import Rating from '../models/Rating.js';
+import Rating from '../../models/Rating.js';
 
-import advancedResults from '../middleware/advancedResults.js';
-import {protect} from '../middleware/auth.js';
+import advancedResults from '../../middleware/advancedResults.js';
+import {protect} from '../../middleware/auth.js';
 
 router
     .route('/')

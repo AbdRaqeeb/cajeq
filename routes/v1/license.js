@@ -6,14 +6,14 @@ import {
     getLicenses,
     getLicense,
     verifyLicense
-} from '../controllers/license.js';
+} from '../../controllers/v1/license.js';
 
 const router = express.Router();
 
-import advancedResults from "../middleware/advancedResults.js";
-import {protect, authorize} from '../middleware/auth.js';
+import advancedResults from "../../middleware/advancedResults.js";
+import {protect, authorize} from '../../middleware/auth.js';
 
-import License from "../models/License.js";
+import License from "../../models/License.js";
 
 router
     .route('/')

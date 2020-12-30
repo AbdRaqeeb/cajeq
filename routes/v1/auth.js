@@ -10,11 +10,11 @@ import {
     login,
     uploadPhoto,
     confirmEmail
-} from '../controllers/auth.js';
+} from '../../controllers/v1/auth.js';
 
 const router = express.Router();
 
-import {protect} from '../middleware/auth.js';
+import {protect} from '../../middleware/auth.js';
 
 router.post('/register', register);
 router.post('/login', login);

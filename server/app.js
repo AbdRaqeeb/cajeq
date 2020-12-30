@@ -20,14 +20,17 @@ connectDB();
 // connect to cloudinary
 config(process.env.CLOUD_NAME, process.env.API_KEY, process.env.API_SECRET);
 
-// Import routes
-import vehicles from '../routes/vehicle.js';
-import auth from '../routes/auth.js'
-import users from '../routes/users.js';
-import ratings from '../routes/rating.js';
-import bookings from '../routes/booking.js';
-import reviews from '../routes/review.js';
-import licenses from '../routes/license.js';
+// Import v1 routes
+import vehicles from '../routes/v1/vehicle.js';
+import auth from '../routes/v1/auth.js'
+import users from '../routes/v1/users.js';
+import ratings from '../routes/v1/rating.js';
+import bookings from '../routes/v1/booking.js';
+import reviews from '../routes/v1/review.js';
+import licenses from '../routes/v1/license.js';
+
+//Import v2 routes
+import vehiclesv2 from '../routes/v2/vehicle.js';
 
 const app = express();
 
@@ -81,6 +84,9 @@ app.use('/api/v1/ratings', ratings);
 app.use('/api/v1/reviews', reviews);
 app.use('/api/v1/bookings', bookings);
 app.use('/api/v1/licenses', licenses);
+
+// version 2 routers
+app.use('/api/v2/vehicles', vehiclesv2);
 
 app.use(errorHandler);
 

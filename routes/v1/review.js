@@ -5,13 +5,13 @@ import {
     getReview,
     updateReview,
     deleteReview
-} from '../controllers/review.js';
+} from '../../controllers/v1/review.js';
 
 const router = express.Router({mergeParams: true});
-import Review from '../models/Review.js';
+import Review from '../../models/Review.js';
 
-import advancedResults from '../middleware/advancedResults.js';
-import {protect, authorize} from '../middleware/auth.js';
+import advancedResults from '../../middleware/advancedResults.js';
+import {protect, authorize} from '../../middleware/auth.js';
 
 router
     .route('/')

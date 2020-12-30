@@ -12,14 +12,14 @@ import {
     rejectBooking,
     cancelBooking,
     finishBooking
-} from '../controllers/booking.js';
+} from '../../controllers/v1/booking.js';
 
 const router = express.Router({mergeParams: true});
 
-import advancedResults from "../middleware/advancedResults.js";
-import Booking from "../models/Booking.js";
+import advancedResults from "../../middleware/advancedResults.js";
+import Booking from "../../models/Booking.js";
 
-import {protect, authorize} from '../middleware/auth.js';
+import {protect, authorize} from '../../middleware/auth.js';
 
 router.route('/user').get(protect, userBookings);
 router.route('/host').get(protect, hostBookings);

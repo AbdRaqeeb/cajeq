@@ -7,17 +7,17 @@ import {
     updateVehicle,
     getVehiclesInRadius,
     addVehicleImages
-} from '../controllers/vehicle.js';
+} from '../../controllers/v1/vehicle.js';
 
 const router = express.Router({mergeParams: true});
 
-import {protect} from '../middleware/auth.js';
-import advancedResults from "../middleware/advancedResults.js";
+import {protect} from '../../middleware/auth.js';
+import advancedResults from "../../middleware/advancedResults.js";
 
 import bookingRouter from "./booking.js";
 import reviewRouter from './review.js';
 
-import Vehicle from '../models/Vehicle.js';
+import Vehicle from '../../models/Vehicle.js';
 
 
 // re-route into booking

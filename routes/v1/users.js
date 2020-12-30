@@ -5,14 +5,14 @@ import {
     createUser,
     updateUser,
     deleteUser
-} from '../controllers/users.js';
+} from '../../controllers/v1/users.js';
 
-import User from '../models/User.js';
+import User from '../../models/User.js';
 
 const router = express.Router({ mergeParams: true });
 
-import advancedResults from '../middleware/advancedResults.js';
-import { protect, authorize } from '../middleware/auth.js';
+import advancedResults from '../../middleware/advancedResults.js';
+import { protect, authorize } from '../../middleware/auth.js';
 
 import vehicleRouter from './vehicle.js';
 import ratingRouter from './rating.js';
