@@ -6,7 +6,9 @@ import {
     getVehicles,
     updateVehicle,
     getVehiclesInRadius,
-    addVehicleImages
+    addVehicleImages,
+    myVehicles,
+    viewUserVehicles
 } from '../../controllers/v1/vehicle.js';
 
 const router = express.Router({mergeParams: true});
@@ -24,6 +26,8 @@ import Vehicle from '../../models/Vehicle.js';
 router.use('/:vehicleId/bookings', bookingRouter);
 router.use('/:vehicleId/reviews', reviewRouter);
 
+router.route('/user').get(protect, myVehicles);
+
 router
     .route('/')
     .get(advancedResults(Vehicle, {
@@ -39,6 +43,8 @@ router
     .delete(protect, deleteVehicle);
 
 router.route('/:id/images').put(protect, addVehicleImages);
+
+router.route('/:userId/user').get(viewUserVehicles);
 
 router.route('/radius/:lat/:long/:distance').get(getVehiclesInRadius);
 export default router;
