@@ -3,6 +3,7 @@ import asyncHandler from 'express-async-handler';
 import ErrorResponse from "../../utils/errorResponse.js";
 import Vehicle from '../../models/Vehicle.js';
 import folders from "../../helpers/folders.js";
+import User from "../../models/User.js";
 
 /**
  * @desc    Add vehicles
@@ -89,6 +90,44 @@ export const getVehicles = asyncHandler(async (req, res, next) => {
     } else {
         res.status(200).json(res.advancedResults);
     }
+});
+
+/**
+ * @desc    Get user vehicles
+ * @route   GET /api/v1/vehicles/user
+ * @access  Private
+ * */
+export const myVehicles = asyncHandler(async (req, res, next) => {
+    const vehicles = await Vehicle.find({user: req.user.id});
+
+    res.status(200).json({
+        success: true,
+        count: vehicles.length,
+        data: vehicles
+    });
+});
+
+/**
+ * @desc    View user vehicles
+ * @route   GET /api/v1/vehicles/:userId/user
+ * @access  Private
+ * */
+export const viewUserVehicles = asyncHandler(async (req, res, next) => {
+    const user = await User.findById(req.params.userId);
+
+    if (!user) {
+        return next(
+            new ErrorResponse(`User with ID: ${req.params.userId}`, 404)
+        );
+    }
+    const vehicles = await Vehicle.find({user: req.params.userId});
+
+    res.status(200).json({
+        success: true,
+        count: vehicles.length,
+        data: vehicles,
+        user
+    })
 });
 
 /**
