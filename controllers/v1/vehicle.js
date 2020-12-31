@@ -13,14 +13,12 @@ import User from "../../models/User.js";
 export const addVehicle = asyncHandler(async (req, res, next) => {
     req.body.user = req.user.id;
 
-    let vehicle = await Vehicle.create(req.body);
-
-    // log req body
-    console.log('Body', req.body);
-
     // decode array of features
-    const features = (typeof (req.body.features)=== 'string') ? JSON.parse(JSON.stringify(req.body.features)) : req.body.features;
+    const features = (typeof (req.body.features) === 'string') ? req.body.features.replace(/[\[\]']+/g, '').split(',') : req.body.features ;
+
     req.body.features = features;
+
+    let vehicle = await Vehicle.create(req.body);
 
     vehicle = await Vehicle.findById(vehicle._id).populate('user', 'name email phone');
 
