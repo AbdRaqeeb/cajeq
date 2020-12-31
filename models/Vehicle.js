@@ -23,7 +23,7 @@ const VehicleSchema = new mongoose.Schema({
       enum: ['automobile', 'motorcycle', 'boat', 'jetski'],
       default: 'automobile'
     },
-    features: [String],
+    features: {type: [{type: String, trim: true}]},
     freecancelation: {
         type: Boolean,
         default: true
