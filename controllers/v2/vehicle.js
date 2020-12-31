@@ -22,10 +22,13 @@ export const addVehicleImages = asyncHandler(async (req, res, next) => {
         );
     }
 
-    console.log('BODY', req.body);
-
-
     const {images} = JSON.parse(JSON.stringify(req.body));
+
+    if (images.length < 2) {
+        return next(
+            new ErrorResponse(`Please upload multiple images`, 400)
+        );
+    }
 
     vehicle = await Vehicle.findByIdAndUpdate(req.params.id, {images}, {
         new: true,
