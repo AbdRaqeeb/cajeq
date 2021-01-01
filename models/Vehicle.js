@@ -94,6 +94,10 @@ const VehicleSchema = new mongoose.Schema({
         default: false
     },
     book_date: Date,
+    booking_id: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Booking'
+    },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',
