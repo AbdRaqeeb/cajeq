@@ -28,11 +28,6 @@ export const userBookings = asyncHandler(async (req, res, next) => {
         .populate("vehicle", "make year model cost pick_up images")
         .populate("host", "name email phone");
 
-    if (bookings.length < 1) {
-        return next(
-            new ErrorResponse(`No booking available`, 404)
-        );
-    }
 
     res.status(200).json({
        success: true,
@@ -51,11 +46,6 @@ export const hostBookings = asyncHandler(async (req, res, next) => {
         .populate("vehicle", "make year model cost pick_up images")
         .populate("user", "name email phone");
 
-    if (bookings.length < 1) {
-        return next(
-            new ErrorResponse(`No booking available`, 404)
-        );
-    }
 
     res.status(200).json({
         success: true,
@@ -134,6 +124,9 @@ export const createBooking = asyncHandler(async (req, res, next) => {
     req.body.pick_up = vehicle.location.formattedAddress;
 
     const booking = await Booking.create(req.body);
+
+    // add booking id to vehicle
+    await Vehicle.findByIdAndUpdate(req.params.vehicleId, {booking_id: booking._id});
 
     // Retrieve user, host & vehicle name from booking
     const details = await getDetails(booking._id);
@@ -217,6 +210,9 @@ export const rejectBooking = asyncHandler(async (req, res, next) => {
         );
     }
 
+    // clear booking id from vehicle
+    await Vehicle.findByIdAndUpdate(booking.vehicle, {booking_id: undefined});
+
     await Booking.findByIdAndUpdate(req.params.id, {status: 'rejected'}, {
         new: true
     });
@@ -250,7 +246,7 @@ export const cancelBooking = asyncHandler(async (req, res, next) => {
         );
     }
 
-    await Vehicle.findByIdAndUpdate(booking.vehicle, {isBooked: false, book_date: undefined});
+    await Vehicle.findByIdAndUpdate(booking.vehicle, {isBooked: false, book_date: undefined, booking_id: undefined});
 
     await Booking.findByIdAndUpdate(req.params.id, {status: 'canceled'}, {
         new: true
@@ -285,7 +281,7 @@ export const finishBooking = asyncHandler(async (req, res, next) => {
         );
     }
 
-    await Vehicle.findByIdAndUpdate(booking.vehicle, {isBooked: false, book_date: undefined});
+    await Vehicle.findByIdAndUpdate(booking.vehicle, {isBooked: false, book_date: undefined, booking_id: undefined});
 
     await Booking.findByIdAndUpdate(req.params.id, {status: 'finished'}, {
         new: true
