@@ -27,7 +27,7 @@ router
     .route('/')
     .get(protect, authorize('admin'), advancedResults(Booking, {
         path: "user host vehicle",
-        select: "name email phone make model year cost"
+        select: "name email phone make model year cost images"
     }), getBookings)
     .post(protect, createBooking);
 
