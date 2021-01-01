@@ -23,6 +23,7 @@ const vehicles = [
         isVerified: true,
         isBooked: true,
         book_date: "2020-12-25",
+        booking_id: "5fd8977b6e708a0b3c130200",
         user: "5fd85d9c9ffe45173c3e44d4"
     },
     {
@@ -49,6 +50,7 @@ const vehicles = [
         isVerified: true,
         isBooked: false,
         book_date: undefined,
+        booking_id: undefined,
         user: "5fd85d9c9ffe45173c3e44d4"
     },
     {
@@ -75,6 +77,7 @@ const vehicles = [
         isVerified: true,
         isBooked: false,
         book_date: undefined,
+        booking_id: undefined,
         user: "5fd85d9c9ffe45173c3e44d5"
     },
     {
@@ -101,6 +104,7 @@ const vehicles = [
         isVerified: false,
         isBooked: false,
         book_date: undefined,
+        booking_id: undefined,
         user: "5fd85d9c9ffe45173c3e44d5"
     },
     {
@@ -127,6 +131,7 @@ const vehicles = [
         isVerified: true,
         isBooked: true,
         book_date: "2020-12-22",
+        booking_id: "5fd8977b6e708a0b3c130205",
         user: "5fd85d9c9ffe45173c3e44d6"
     },
     {
@@ -153,6 +158,7 @@ const vehicles = [
         isVerified: true,
         isBooked: false,
         book_date: undefined,
+        booking_id: undefined,
         user: "5fd85d9c9ffe45173c3e44d6"
     },
     {
@@ -179,6 +185,7 @@ const vehicles = [
         isVerified: true,
         isBooked: true,
         book_date: "2020-12-31",
+        booking_id: "5fd8977b6e708a0b3c130206",
         user: "5fd85d9c9ffe45173c3e44d6"
     },
     {
@@ -205,6 +212,7 @@ const vehicles = [
         isVerified: false,
         isBooked: false,
         book_date: undefined,
+        booking_id: undefined,
         user: "5fd85d9c9ffe45173c3e44d6"
     },
     {
@@ -231,6 +239,7 @@ const vehicles = [
         isVerified: true,
         isBooked: true,
         book_date: "2021-01-13",
+        booking_id: "5fd8977b6e708a0b3c130208",
         user: "5fd85d9c9ffe45173c3e44d7"
     },
     {
@@ -257,6 +266,7 @@ const vehicles = [
         isVerified: true,
         isBooked: true,
         book_date: "2020-12-21",
+        booking_id: "5fd8977b6e708a0b3c130209",
         user: "5fd85d9c9ffe45173c3e44d8"
     },
     {
@@ -283,6 +293,7 @@ const vehicles = [
         isVerified: true,
         isBooked: true,
         book_date: "2020-12-22",
+        booking_id: "5fd8977b6e708a0b3c13020a",
         user: "5fd85d9c9ffe45173c3e44d8"
     },
     {
@@ -308,6 +319,7 @@ const vehicles = [
         ],
         isVerified: true,
         isBooked: true,
+        booking_id: "5fd8977b6e708a0b3c13020b",
         book_date: "2020-12-29",
         user: "5fd85d9c9ffe45173c3e44d9"
     },
@@ -335,6 +347,7 @@ const vehicles = [
         isVerified: false,
         isBooked: false,
         book_date: undefined,
+        booking_id: undefined,
         user: "5fd85d9c9ffe45173c3e44d9"
     },
     {
@@ -361,6 +374,7 @@ const vehicles = [
         isVerified: true,
         isBooked: true,
         book_date: "2020-12-28",
+        booking_id: "5fd8977b6e708a0b3c13020d",
         user: "5fd85d9c9ffe45173c3e44da"
     },
     {
@@ -387,6 +401,7 @@ const vehicles = [
         isVerified: false,
         isBooked: false,
         book_date: undefined,
+        booking_id: undefined,
         user: "5fd85d9c9ffe45173c3e44da"
     },
     {
@@ -413,6 +428,7 @@ const vehicles = [
         isVerified: true,
         isBooked: true,
         book_date: "2020-12-20",
+        booking_id: "5fd8977b6e708a0b3c13020f",
         user: "5fd85d9c9ffe45173c3e44db"
     },
     {
@@ -439,6 +455,7 @@ const vehicles = [
         isVerified: true,
         isBooked: false,
         book_date: undefined,
+        booking_id: undefined,
         user: "5fd85d9c9ffe45173c3e44db"
     },
     {
@@ -465,6 +482,7 @@ const vehicles = [
         isVerified: true,
         isBooked: true,
         book_date: "2020-12-22",
+        booking_id: "5fd8977b6e708a0b3c130211",
         user: "5fd85d9c9ffe45173c3e44db"
     },
     {
@@ -491,6 +509,7 @@ const vehicles = [
         isVerified: false,
         isBooked: false,
         book_date: undefined,
+        booking_id: undefined,
         user: "5fd85d9c9ffe45173c3e44dc"
     },
     {
@@ -517,6 +536,7 @@ const vehicles = [
         isVerified: true,
         isBooked: true,
         book_date: "2021-01-02",
+        booking_id: "5fd8977b6e708a0b3c130213",
         user: "5fd85d9c9ffe45173c3e44dc"
     }
 ];
