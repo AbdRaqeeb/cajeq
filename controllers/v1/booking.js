@@ -25,14 +25,8 @@ export const getBookings = asyncHandler(async (req, res, next) => {
  * */
 export const userBookings = asyncHandler(async (req, res, next) => {
     const bookings = await Booking.find({user: req.user.id})
-        .populate({
-            path: "vehicle",
-            select: "make year model cost pick_up"
-        })
-        .populate({
-            path: "host",
-            select: "name email phone"
-        });
+        .populate("vehicle", "make year model cost pick_up images")
+        .populate("host", "name email phone");
 
     if (bookings.length < 1) {
         return next(
@@ -54,14 +48,8 @@ export const userBookings = asyncHandler(async (req, res, next) => {
  * */
 export const hostBookings = asyncHandler(async (req, res, next) => {
     const bookings = await Booking.find({host: req.user.id})
-        .populate({
-            path: "vehicle",
-            select: "make year model cost pick_up"
-        })
-        .populate({
-            path: "user",
-            select: "name email phone"
-        });
+        .populate("vehicle", "make year model cost pick_up images")
+        .populate("user", "name email phone");
 
     if (bookings.length < 1) {
         return next(
@@ -83,14 +71,8 @@ export const hostBookings = asyncHandler(async (req, res, next) => {
  * */
 export const getBooking = asyncHandler(async (req, res, next) => {
     const booking = await Booking.findById(req.params.id)
-        .populate({
-            path: "user host",
-            select: "name email phone"
-        })
-        .populate({
-            path: "vehicle",
-            select: "make year cost model location.formattedAddress"
-        });
+        .populate("user host", "name email phone")
+        .populate("vehicle", "make year images cost model location.formattedAddress");
 
     if (!booking) {
         return next(
@@ -117,10 +99,7 @@ export const getBooking = asyncHandler(async (req, res, next) => {
  * @access  Private
  * */
 export const createBooking = asyncHandler(async (req, res, next) => {
-    const vehicle = await Vehicle.findById(req.params.vehicleId).populate({
-        path: "user",
-        select: "name email phone"
-    });
+    const vehicle = await Vehicle.findById(req.params.vehicleId).populate("user", "name email phone");
 
     if (!vehicle) {
         return next(
@@ -412,13 +391,9 @@ export const deleteBooking = asyncHandler(async (req, res, next) => {
 
 // get booking details function
 const getDetails = async (id) => {
-    const details = await Booking.findById(id).populate({
-        path: "user host",
-        select: "name email phone",
-    }).populate({
-        path: "vehicle",
-        select: "make year model cost images"
-    });
+    const details = await Booking.findById(id)
+        .populate("user host", "name email phone")
+        .populate("vehicle", "make year model cost images");
 
     return details;
 };
