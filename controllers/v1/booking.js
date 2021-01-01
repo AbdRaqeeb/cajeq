@@ -275,7 +275,7 @@ export const finishBooking = asyncHandler(async (req, res, next) => {
         );
     }
 
-    if (req.user.id !== booking.user && req.user.id !== booking.host && req.user.role !== 'admin') {
+    if (req.user.id !== booking.host && req.user.role !== 'admin') {
         return next(
             new ErrorResponse(`User not authorized to access resource`, 405)
         );
