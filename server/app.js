@@ -30,7 +30,8 @@ import reviews from '../routes/v1/review.js';
 import licenses from '../routes/v1/license.js';
 
 //Import v2 routes
-import vehiclesv2 from '../routes/v2/vehicle.js';
+import vehicles_v2 from '../routes/v2/vehicle.js';
+import licenses_v2 from '../routes/v2/license.js';
 
 const app = express();
 
@@ -86,7 +87,8 @@ app.use('/api/v1/bookings', bookings);
 app.use('/api/v1/licenses', licenses);
 
 // version 2 routers
-app.use('/api/v2/vehicles', vehiclesv2);
+app.use('/api/v2/vehicles', vehicles_v2);
+app.use('/api/v2/licenses', licenses_v2);
 
 app.use(errorHandler);
 
