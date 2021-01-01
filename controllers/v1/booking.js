@@ -126,7 +126,7 @@ export const createBooking = asyncHandler(async (req, res, next) => {
     const booking = await Booking.create(req.body);
 
     // add booking id to vehicle
-    await Vehicle.findByIdAndUpdate(req.params.vehicleId, {booking_id: booking._id});
+    await Vehicle.findByIdAndUpdate(req.params.vehicleId, {booking_id: booking._id, isBooked: true});
 
     // Retrieve user, host & vehicle name from booking
     const details = await getDetails(booking._id);
