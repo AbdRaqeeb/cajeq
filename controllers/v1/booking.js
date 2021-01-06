@@ -25,7 +25,7 @@ export const getBookings = asyncHandler(async (req, res, next) => {
  * */
 export const userBookings = asyncHandler(async (req, res, next) => {
     const bookings = await Booking.find({user: req.user.id})
-        .populate("vehicle", "make year model cost pick_up images")
+        .populate("vehicle", "make year model cost pick_up images isBooked booking_id")
         .populate("host", "name email phone");
 
 
@@ -43,7 +43,7 @@ export const userBookings = asyncHandler(async (req, res, next) => {
  * */
 export const hostBookings = asyncHandler(async (req, res, next) => {
     const bookings = await Booking.find({host: req.user.id})
-        .populate("vehicle", "make year model cost pick_up images")
+        .populate("vehicle", "make year model cost pick_up images isBooked booking_id")
         .populate("user", "name email phone");
 
 
