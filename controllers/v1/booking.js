@@ -389,7 +389,7 @@ export const deleteBooking = asyncHandler(async (req, res, next) => {
 const getDetails = async (id) => {
     const details = await Booking.findById(id)
         .populate("user host", "name email phone")
-        .populate("vehicle", "make year model cost images");
+        .populate("vehicle", "make year model cost images isBooked booking_id");
 
     return details;
 };
