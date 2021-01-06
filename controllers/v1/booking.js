@@ -37,7 +37,7 @@ export const userBookings = asyncHandler(async (req, res, next) => {
 });
 
 /**
- * @desc    Get host// bookings
+ * @desc    Get host bookings
  * @route   GET /api/v1/bookings/host
  * @access  Private
  * */
